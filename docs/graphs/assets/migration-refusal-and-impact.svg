@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="540" viewBox="0 0 720 540" role="img" aria-labelledby="title desc">
+<title id="title">Refusal and impact report</title>
+<desc id="desc">The same v3 proposal is refused by the importer and analysed by the read-only impact helper. Refusal prevents writes; the report informs review.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#52677b"/></marker></defs>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#142c43;font-size:20px}.title{font-size:26px;font-weight:700}.label{font-size:22px;font-weight:600}.detail{font-size:20px}.edge{stroke:#52677b;stroke-width:2.5;fill:none;marker-end:url(#arrow)}.dash{stroke-dasharray:7 5}.box{stroke:#567795;stroke-width:2}.read{fill:#eaf3ff}.write{fill:#fff3df}.store{fill:#e8f5ef}.invalid{fill:#ffebee;stroke:#b42318}</style>
+<rect width="720" height="540" fill="#fff"/>
+<text x="360" y="40" text-anchor="middle" class="title">Refusal and impact report</text>
+<rect x="60" y="70" width="600" height="80" rx="12" class="box write"/>
+<text x="360.0" y="103.0" text-anchor="middle" class="label">Proposed ontology v3</text>
+<text x="360.0" y="131.0" text-anchor="middle" class="detail">Compared with the active graph</text>
+<path d="M260 150 V205 H180 V254" class="edge"/>
+<path d="M460 150 V205 H540 V254" class="edge"/>
+<rect x="30" y="260" width="300" height="100" rx="12" class="box invalid"/>
+<text x="180.0" y="303.0" text-anchor="middle" class="label">graphrag migrate</text>
+<text x="180.0" y="331.0" text-anchor="middle" class="detail">Refuses breaking changes</text>
+<rect x="390" y="260" width="300" height="100" rx="12" class="box read"/>
+<text x="540.0" y="303.0" text-anchor="middle" class="label">lab_impact.py</text>
+<text x="540.0" y="331.0" text-anchor="middle" class="detail">Reports structural impact</text>
+<text x="180" y="405" text-anchor="middle" class="label">Protects current data</text>
+<text x="540" y="405" text-anchor="middle" class="label">Informs the review</text>
+<text x="180" y="440" text-anchor="middle" class="detail">No graph writes</text>
+<text x="540" y="440" text-anchor="middle" class="detail">Facts, context and code</text>
+<text x="360" y="505" text-anchor="middle" class="detail">A report is not permission to migrate.</text>
+</svg>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="790" viewBox="0 0 720 790" role="img" aria-labelledby="title desc">
+<title id="title">Impact of the v3 proposal</title>
+<desc id="desc">Two invalid facts affect three entities, two owning documents and one shared context, and four questions. Separately, review the VISITS mapping in prepare.py.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#52677b"/></marker></defs>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#142c43;font-size:20px}.title{font-size:26px;font-weight:700}.label{font-size:22px;font-weight:600}.detail{font-size:20px}.edge{stroke:#52677b;stroke-width:2.5;fill:none;marker-end:url(#arrow)}.dash{stroke-dasharray:7 5}.box{stroke:#567795;stroke-width:2}.read{fill:#eaf3ff}.write{fill:#fff3df}.store{fill:#e8f5ef}.invalid{fill:#ffebee;stroke:#b42318}</style>
+<rect width="720" height="790" fill="#fff"/>
+<text x="360" y="40" text-anchor="middle" class="title">Impact of the v3 proposal</text>
+<rect x="60" y="70" width="600" height="80" rx="12" class="box write"/>
+<text x="360.0" y="103.0" text-anchor="middle" class="label">Proposed ontology v3</text>
+<text x="360.0" y="131.0" text-anchor="middle" class="detail">Compare with the active v2 definition</text>
+<path d="M360 150 V189" class="edge"/>
+<rect x="60" y="195" width="600" height="80" rx="12" class="box write"/>
+<text x="360.0" y="228.0" text-anchor="middle" class="label">2 invalid facts</text>
+<text x="360.0" y="256.0" text-anchor="middle" class="detail">VISITS and REQUIRES</text>
+<path d="M360 275 V314" class="edge"/>
+<rect x="60" y="320" width="600" height="80" rx="12" class="box read"/>
+<text x="360.0" y="353.0" text-anchor="middle" class="label">3 affected entities</text>
+<text x="360.0" y="381.0" text-anchor="middle" class="detail">Lunar Excursions, Moon, Lunar Surface Safety</text>
+<path d="M360 400 V439" class="edge"/>
+<rect x="60" y="445" width="600" height="80" rx="12" class="box read"/>
+<text x="360.0" y="478.0" text-anchor="middle" class="label">3 documents to review</text>
+<text x="360.0" y="506.0" text-anchor="middle" class="detail">2 own invalid facts; 1 shares affected context</text>
+<path d="M360 525 V564" class="edge"/>
+<rect x="60" y="570" width="600" height="80" rx="12" class="box read"/>
+<text x="360.0" y="603.0" text-anchor="middle" class="label">4 questions to rerun</text>
+<text x="360.0" y="631.0" text-anchor="middle" class="detail">Context exposure does not prove a wrong answer</text>
+<rect x="60" y="700" width="600" height="65" rx="12" class="box write"/>
+<text x="360.0" y="739.5" text-anchor="middle" class="label">Also review the VISITS mapping in prepare.py</text>
+</svg>

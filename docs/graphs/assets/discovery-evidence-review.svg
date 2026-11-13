@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="650" viewBox="0 0 720 650" role="img" aria-labelledby="title desc">
+<title id="title">A real quote can support the wrong service</title>
+<desc id="desc">Quotes about Lunar Excursions were attached to other services. Presence checks pass even when the subject or the claimed relationship is wrong.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#52677b"/></marker></defs>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#142c43;font-size:20px}.title{font-size:26px;font-weight:700}.label{font-size:22px;font-weight:600}.detail{font-size:20px}.edge{stroke:#52677b;stroke-width:2.5;fill:none;marker-end:url(#arrow)}.dash{stroke-dasharray:7 5}.box{stroke:#567795;stroke-width:2}.read{fill:#eaf3ff}.write{fill:#fff3df}.store{fill:#e8f5ef}.invalid{fill:#ffebee;stroke:#b42318}</style>
+<rect width="720" height="650" fill="#fff"/>
+<text x="360" y="40" text-anchor="middle" class="title">A real quote can support the wrong service</text>
+<rect x="60" y="70" width="600" height="80" rx="12" class="box write"/>
+<text x="360.0" y="103.0" text-anchor="middle" class="label">Quotes about Lunar Excursions</text>
+<text x="360.0" y="131.0" text-anchor="middle" class="detail">The model attaches them to other services</text>
+<path d="M60 110 H30 V540" stroke="#52677b" stroke-width="2.5" fill="none"/>
+<path d="M30 265 H54" class="edge"/>
+<rect x="60" y="220" width="600" height="90" rx="12" class="box invalid"/>
+<text x="360.0" y="258.0" text-anchor="middle" class="label">Photography Tours REQUIRES training</text>
+<text x="360.0" y="286.0" text-anchor="middle" class="detail">Reject: policy names Lunar Excursions only</text>
+<path d="M30 410 H54" class="edge"/>
+<rect x="60" y="365" width="600" height="90" rx="12" class="box invalid"/>
+<text x="360.0" y="403.0" text-anchor="middle" class="label">Space Hotel Stays VISITS Moon</text>
+<text x="360.0" y="431.0" text-anchor="middle" class="detail">Reject: wrong service; lunar orbit is not the surface</text>
+<path d="M30 555 H54" class="edge"/>
+<rect x="60" y="510" width="600" height="90" rx="12" class="box write"/>
+<text x="360.0" y="548.0" text-anchor="middle" class="label">Photography Tours VISITS Moon</text>
+<text x="360.0" y="576.0" text-anchor="middle" class="detail">Original quote rejected; demo interpretation reviewed</text>
+<text x="360" y="635" text-anchor="middle" class="detail">Quote presence is a code check. Semantic support needs review.</text>
+</svg>

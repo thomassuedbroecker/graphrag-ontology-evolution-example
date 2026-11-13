@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="630" viewBox="0 0 720 630" role="img" aria-labelledby="title desc">
+<title id="title">Why the producer must change too</title>
+<desc id="desc">Fixing only the stored fact leaves the old relation in prepare.py. The next prepare run creates VISITS again, which v3 rejects.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#52677b"/></marker></defs>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#142c43;font-size:20px}.title{font-size:26px;font-weight:700}.label{font-size:22px;font-weight:600}.detail{font-size:20px}.edge{stroke:#52677b;stroke-width:2.5;fill:none;marker-end:url(#arrow)}.dash{stroke-dasharray:7 5}.box{stroke:#567795;stroke-width:2}.read{fill:#eaf3ff}.write{fill:#fff3df}.store{fill:#e8f5ef}.invalid{fill:#ffebee;stroke:#b42318}</style>
+<rect width="720" height="630" fill="#fff"/>
+<text x="360" y="40" text-anchor="middle" class="title">Why the producer must change too</text>
+<rect x="60" y="70" width="600" height="90" rx="12" class="box store"/>
+<text x="360.0" y="108.0" text-anchor="middle" class="label">You repair the stored fact</text>
+<text x="360.0" y="136.0" text-anchor="middle" class="detail">VISITS → TRAVELS_TO, after semantic review</text>
+<path d="M360 160 V204" class="edge"/>
+<rect x="60" y="210" width="600" height="90" rx="12" class="box write"/>
+<text x="360.0" y="248.0" text-anchor="middle" class="label">Later, someone runs graphrag prepare</text>
+<text x="360.0" y="276.0" text-anchor="middle" class="detail">The source mapping still contains VISITS</text>
+<path d="M360 300 V344" class="edge"/>
+<rect x="60" y="350" width="600" height="90" rx="12" class="box write"/>
+<text x="360.0" y="388.0" text-anchor="middle" class="label">prepare.py emits VISITS again</text>
+<text x="360.0" y="416.0" text-anchor="middle" class="detail">A corrected database did not change the producer</text>
+<path d="M360 440 V484" class="edge"/>
+<rect x="60" y="490" width="600" height="90" rx="12" class="box invalid"/>
+<text x="360.0" y="528.0" text-anchor="middle" class="label">v3 rejects the newly prepared document</text>
+<text x="360.0" y="556.0" text-anchor="middle" class="detail">Review the mapping alongside the data repair</text>
+</svg>

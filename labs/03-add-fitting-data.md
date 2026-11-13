@@ -42,9 +42,20 @@ Validated 2 documents
 
 ```json
 [
-  { "id": "company-overview", "action": "update",
-    "added_facts": ["galaxium OFFERS lunar-photography-tours"], "removed_facts": [] },
-  { "id": "lunar-itinerary", "action": "unchanged", "added_facts": [], "removed_facts": [] }
+  {
+    "id": "company-overview",
+    "action": "update",
+    "added_facts": [
+      "galaxium OFFERS lunar-photography-tours"
+    ],
+    "removed_facts": []
+  },
+  {
+    "id": "lunar-itinerary",
+    "action": "unchanged",
+    "added_facts": [],
+    "removed_facts": []
+  }
 ]
 ```
 
@@ -75,7 +86,7 @@ Optionally, look at it in Neo4j Browser (http://localhost:7474). The company doc
 
 ![Graph after Lab 3: Lunar Photography Tours is mentioned by the company document and offered by Galaxium Travels; the company document has two revisions, the lunar document one; the Ontology node stays isolated.](../images/03-graph.png)
 
-[Initial graph and service update](../docs/graphs/initial-and-update.md#3-after-the-service-update--03-graphpng) explains what changed.
+[Initial graph and service update](../docs/graphs/initial-and-update.md#changes-through-the-labs) explains what changed.
 
 ## Step 4: Ask the initial question (Q1) again
 
@@ -111,3 +122,11 @@ A new **name** is data. A new **kind of thing** or **kind of relationship** is a
 
 - [ ] 5 facts, ontology still `1`.
 - [ ] `company-overview` has 2 revisions: the old snapshot is kept.
+
+<details>
+<summary><b>Show answers</b></summary>
+
+1. The new Service instance adds one OFFERS fact, giving five facts under ontology 1.
+2. Only company-overview gains a revision; the old snapshot remains and lunar-itinerary is unchanged.
+
+</details>

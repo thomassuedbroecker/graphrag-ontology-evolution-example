@@ -122,4 +122,13 @@ The checked-in v1 files can no longer be imported, by design. New imports must b
 - [ ] Fact count and search scores are unchanged.
 - [ ] In Neo4j Browser, `MATCH (o:Ontology) RETURN o` shows two nodes linked by `EXTENDS`.
 
+<details>
+<summary><b>Show answers</b></summary>
+
+1. Ontology 2 becomes active; ontology 1 remains in history.
+2. The five facts and passage text stay the same. Embeddings are reused; relabelled documents get new revisions.
+3. EXTENDS points from version 2 to version 1.
+
+</details>
+
 Rollback: the old snapshots are kept as `Revision` nodes, but there is no down-migration command. To go back, reset (see [Labs](README.md#reset)) and repeat Labs 1–5.

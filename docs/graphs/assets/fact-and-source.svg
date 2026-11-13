@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="470" viewBox="0 0 720 470" role="img" aria-labelledby="title desc">
+<title id="title">Read a fact and its owner</title>
+<desc id="desc">The subject Lunar Excursions is connected to the object Moon by VISITS. The lunar-itinerary document owns the whole fact.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#52677b"/></marker></defs>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#142c43;font-size:20px}.title{font-size:26px;font-weight:700}.label{font-size:22px;font-weight:600}.detail{font-size:20px}.edge{stroke:#52677b;stroke-width:2.5;fill:none;marker-end:url(#arrow)}.dash{stroke-dasharray:7 5}.box{stroke:#567795;stroke-width:2}.read{fill:#eaf3ff}.write{fill:#fff3df}.store{fill:#e8f5ef}.invalid{fill:#ffebee;stroke:#b42318}</style>
+<rect width="720" height="470" fill="#fff"/>
+<text x="360" y="40" text-anchor="middle" class="title">Read a fact and its owner</text>
+<rect x="30" y="80" width="250" height="90" rx="12" class="box read"/>
+<text x="155.0" y="118.0" text-anchor="middle" class="label">Lunar Excursions</text>
+<text x="155.0" y="146.0" text-anchor="middle" class="detail">Subject · Service</text>
+<rect x="440" y="80" width="250" height="90" rx="12" class="box read"/>
+<text x="565.0" y="118.0" text-anchor="middle" class="label">Moon</text>
+<text x="565.0" y="146.0" text-anchor="middle" class="detail">Object · Destination</text>
+<path d="M280 125 H434" class="edge"/>
+<text x="360" y="110" text-anchor="middle" class="label">VISITS</text>
+<rect x="180" y="310" width="360" height="80" rx="12" class="box write"/>
+<text x="360.0" y="343.0" text-anchor="middle" class="label">lunar-itinerary</text>
+<text x="360.0" y="371.0" text-anchor="middle" class="detail">Owning document</text>
+<path d="M360 310 V146" class="edge dash"/>
+<text x="375" y="240" text-anchor="start" class="detail">owns the fact</text>
+<text x="360" y="440" text-anchor="middle" class="detail">The document owns the whole triple, not the entity.</text>
+</svg>

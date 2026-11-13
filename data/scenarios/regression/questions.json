@@ -1,0 +1,21 @@
+{
+  "description": "Question catalog for impact analysis (Lab 10) and regression checks (Lab 12)",
+  "questions": [
+    {
+      "id": "Q1",
+      "question": "Which destination can Galaxium Travels customers visit?"
+    },
+    {
+      "id": "Q2",
+      "question": "Which services does Galaxium Travels offer?"
+    },
+    {
+      "id": "Q3",
+      "question": "Which training does a Lunar Excursions customer need before departure?"
+    },
+    {
+      "id": "Q4",
+      "question": "Which services take customers to the Moon?"
+    }
+  ]
+}

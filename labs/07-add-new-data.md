@@ -89,3 +89,12 @@ Prepare the Lab 3 source again, this time for v2:
 - [ ] 6 facts, including `lunar-excursions REQUIRES lunar-surface-safety`.
 - [ ] `Training: 1` in `entity_types`.
 - [ ] The re-prepared Lab 3 data is `unchanged`.
+
+<details>
+<summary><b>Show answers</b></summary>
+
+1. The sixth fact is lunar-excursions REQUIRES lunar-surface-safety, owned by lunar-training-policy.
+2. Training: 1 counts the new lunar-surface-safety entity.
+3. Preparing the same source for v2 matches the migrated documents, so the plan reports unchanged.
+
+</details>

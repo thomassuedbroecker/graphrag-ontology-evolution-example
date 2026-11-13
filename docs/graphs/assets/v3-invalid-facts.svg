@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="550" viewBox="0 0 720 550" role="img" aria-labelledby="title desc">
+<title id="title">Two facts become invalid in v3</title>
+<desc id="desc">VISITS is removed. REQUIRES now needs a Destination subject, but the existing fact starts at a Service.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#52677b"/></marker></defs>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#142c43;font-size:20px}.title{font-size:26px;font-weight:700}.label{font-size:22px;font-weight:600}.detail{font-size:20px}.edge{stroke:#52677b;stroke-width:2.5;fill:none;marker-end:url(#arrow)}.dash{stroke-dasharray:7 5}.box{stroke:#567795;stroke-width:2}.read{fill:#eaf3ff}.write{fill:#fff3df}.store{fill:#e8f5ef}.invalid{fill:#ffebee;stroke:#b42318}</style>
+<rect width="720" height="550" fill="#fff"/>
+<text x="360" y="40" text-anchor="middle" class="title">Two facts become invalid in v3</text>
+<rect x="180" y="70" width="500" height="80" rx="12" class="box read"/>
+<text x="430.0" y="103.0" text-anchor="middle" class="label">Lunar Excursions</text>
+<text x="430.0" y="131.0" text-anchor="middle" class="detail">Service</text>
+<path d="M180 110 H60 V430" stroke="#52677b" stroke-width="2.5" fill="none"/>
+<path d="M60 275 H174" class="edge dash"/>
+<text x="118" y="260" text-anchor="middle" class="detail">VISITS</text>
+<rect x="180" y="235" width="500" height="80" rx="12" class="box invalid dash"/>
+<text x="430.0" y="268.0" text-anchor="middle" class="label">Moon · Destination</text>
+<text x="430.0" y="296.0" text-anchor="middle" class="detail">Invalid: relation removed</text>
+<path d="M60 430 H174" class="edge dash"/>
+<text x="118" y="415" text-anchor="middle" class="detail">REQUIRES</text>
+<rect x="180" y="390" width="500" height="80" rx="12" class="box invalid dash"/>
+<text x="430.0" y="423.0" text-anchor="middle" class="label">Lunar Surface Safety · Training</text>
+<text x="430.0" y="451.0" text-anchor="middle" class="detail">Invalid: subject must be Destination</text>
+<text x="360" y="520" text-anchor="middle" class="detail">Dashed red boxes: facts rejected by v3.</text>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="470" viewBox="0 0 720 470" role="img" aria-labelledby="title desc">
+<title id="title">A candidate between documents</title>
+<desc id="desc">Photography Tours is declared in the company overview and Moon in the itinerary. A candidate VISITS link is allowed by the ontology but needs source review.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#52677b"/></marker></defs>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#142c43;font-size:20px}.title{font-size:26px;font-weight:700}.label{font-size:22px;font-weight:600}.detail{font-size:20px}.edge{stroke:#52677b;stroke-width:2.5;fill:none;marker-end:url(#arrow)}.dash{stroke-dasharray:7 5}.box{stroke:#567795;stroke-width:2}.read{fill:#eaf3ff}.write{fill:#fff3df}.store{fill:#e8f5ef}.invalid{fill:#ffebee;stroke:#b42318}</style>
+<rect width="720" height="470" fill="#fff"/>
+<text x="360" y="40" text-anchor="middle" class="title">A candidate between documents</text>
+<rect x="60" y="70" width="600" height="90" rx="12" class="box read"/>
+<text x="360.0" y="108.0" text-anchor="middle" class="label">company-overview</text>
+<text x="360.0" y="136.0" text-anchor="middle" class="detail">Lunar Photography Tours · Service</text>
+<path d="M360 160 V304" class="edge dash"/>
+<text x="375" y="220" text-anchor="start" class="label">VISITS ?</text>
+<text x="375" y="252" text-anchor="start" class="detail">Candidate, not evidence</text>
+<rect x="60" y="310" width="600" height="90" rx="12" class="box read"/>
+<text x="360.0" y="348.0" text-anchor="middle" class="label">lunar-itinerary</text>
+<text x="360.0" y="376.0" text-anchor="middle" class="detail">Moon · Destination</text>
+<text x="360" y="445" text-anchor="middle" class="detail">An allowed pair of entity types does not prove a relationship.</text>
+</svg>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="920" viewBox="0 0 720 920" role="img" aria-labelledby="title desc">
+<title id="title">From candidates to an imported fact</title>
+<desc id="desc">Code enumerates six missing relations. The recorded model proposes three, quote gates retain three, and a demo interpretation retains one. The operator imports it explicitly.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#52677b"/></marker></defs>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#142c43;font-size:20px}.title{font-size:26px;font-weight:700}.label{font-size:22px;font-weight:600}.detail{font-size:20px}.edge{stroke:#52677b;stroke-width:2.5;fill:none;marker-end:url(#arrow)}.dash{stroke-dasharray:7 5}.box{stroke:#567795;stroke-width:2}.read{fill:#eaf3ff}.write{fill:#fff3df}.store{fill:#e8f5ef}.invalid{fill:#ffebee;stroke:#b42318}</style>
+<rect width="720" height="920" fill="#fff"/>
+<text x="360" y="40" text-anchor="middle" class="title">From candidates to an imported fact</text>
+<rect x="60" y="70" width="600" height="90" rx="12" class="box read"/>
+<text x="360.0" y="108.0" text-anchor="middle" class="label">12 ontology-valid combinations</text>
+<text x="360.0" y="136.0" text-anchor="middle" class="detail">Code combines the existing entity types</text>
+<path d="M360 160 V204" class="edge"/>
+<rect x="60" y="210" width="600" height="90" rx="12" class="box read"/>
+<text x="360.0" y="248.0" text-anchor="middle" class="label">6 missing candidates</text>
+<text x="360.0" y="276.0" text-anchor="middle" class="detail">Code removes the 6 existing facts</text>
+<path d="M360 300 V344" class="edge"/>
+<rect x="60" y="350" width="600" height="90" rx="12" class="box write"/>
+<text x="360.0" y="388.0" text-anchor="middle" class="label">3 proposals in the recorded run</text>
+<text x="360.0" y="416.0" text-anchor="middle" class="detail">LLM judges support and supplies quotes</text>
+<path d="M360 440 V484" class="edge"/>
+<rect x="60" y="490" width="600" height="90" rx="12" class="box read"/>
+<text x="360.0" y="528.0" text-anchor="middle" class="label">3 proposals pass quote checks</text>
+<text x="360.0" y="556.0" text-anchor="middle" class="detail">Code checks quote presence, not truth</text>
+<path d="M360 580 V624" class="edge"/>
+<rect x="60" y="630" width="600" height="90" rx="12" class="box store"/>
+<text x="360.0" y="668.0" text-anchor="middle" class="label">1 retained in the demo fixture</text>
+<text x="360.0" y="696.0" text-anchor="middle" class="detail">Person reviews; interpretation is an assumption</text>
+<path d="M360 720 V764" class="edge"/>
+<rect x="60" y="770" width="600" height="90" rx="12" class="box store"/>
+<text x="360.0" y="808.0" text-anchor="middle" class="label">1 imported fact · 7 facts in total</text>
+<text x="360.0" y="836.0" text-anchor="middle" class="detail">Operator runs graphrag ingest --apply</text>
+<text x="360" y="905" text-anchor="middle" class="detail">Counts describe one recorded run; model proposals can vary.</text>
+</svg>

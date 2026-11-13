@@ -92,18 +92,17 @@ MATCH (n) WHERE n:Entity OR n:Document OR n:Ontology RETURN n
 
 [Initial graph and service update](../docs/graphs/initial-and-update.md) explains the colours and edges.
 
-## Commands you will use in every lab
-
-| Command | Purpose |
-| --- | --- |
-| `.venv/bin/graphrag inspect` | Graph state: ontology, document revisions, facts |
-| `.venv/bin/graphrag search "…"` | Retrieval only, no LLM |
-| `.venv/bin/graphrag ask --trace "…"` | Agent answer plus tool calls and prompt version |
-| `./scripts/ingest.sh --data DIR [--apply]` | Plan, then write documents |
-| `./scripts/status.sh` | Service health |
-| `./scripts/stop.sh` | Stop services, keep data |
+Other commands and settings: [runtime reference](../docs/reference.md).
 
 ## Check yourself
 
 - [ ] `inspect` shows ontology `1`, 2 documents, 4 facts.
 - [ ] Your revision IDs match `67b0010436b7` and `4b9e5f32b2f7`. If they differ, check `OLLAMA_EMBED_MODEL` and `EMBEDDING_DIMENSIONS` in `.env`: they are part of the revision.
+
+<details>
+<summary><b>Show answers</b></summary>
+
+1. A fresh graph has ontology 1, two documents and four facts: three OFFERS and one VISITS.
+2. Revision hashes include document content, embedding model name and dimensions. Different settings produce different hashes.
+
+</details>

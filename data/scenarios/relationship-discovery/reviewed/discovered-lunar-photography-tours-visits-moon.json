@@ -1,0 +1,34 @@
+{
+  "id": "discovered-lunar-photography-tours-visits-moon",
+  "title": "Discovered relation: Lunar Photography Tours VISITS Moon",
+  "source": "galaxium:company-overview#primary-services",
+  "ontology_version": "2",
+  "text": "Lunar Photography Tours VISITS Moon. Discovered across the stored documents and reviewed by a person.\nEvidence from company-overview: Guided lunar photography experience",
+  "entities": [
+    {
+      "id": "lunar-photography-tours",
+      "name": "Lunar Photography Tours",
+      "type": "Service"
+    },
+    {
+      "id": "moon",
+      "name": "Moon",
+      "type": "Destination"
+    }
+  ],
+  "facts": [
+    {
+      "subject": "lunar-photography-tours",
+      "relation": "VISITS",
+      "object": "moon"
+    }
+  ],
+  "evidence": [
+    {
+      "subject": "lunar-photography-tours",
+      "relation": "VISITS",
+      "object": "moon",
+      "quote": "Guided lunar photography experience"
+    }
+  ]
+}

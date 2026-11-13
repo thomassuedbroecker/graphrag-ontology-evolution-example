@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="670" viewBox="0 0 720 670" role="img" aria-labelledby="title desc">
+<title id="title">Choose a repair hint</title>
+<desc id="desc">Three conditions explain repair suggestions. Matching endpoint types justify a rename suggestion, but a person must confirm equivalent meaning.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#52677b"/></marker></defs>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#142c43;font-size:20px}.title{font-size:26px;font-weight:700}.label{font-size:22px;font-weight:600}.detail{font-size:20px}.edge{stroke:#52677b;stroke-width:2.5;fill:none;marker-end:url(#arrow)}.dash{stroke-dasharray:7 5}.box{stroke:#567795;stroke-width:2}.read{fill:#eaf3ff}.write{fill:#fff3df}.store{fill:#e8f5ef}.invalid{fill:#ffebee;stroke:#b42318}</style>
+<rect width="720" height="670" fill="#fff"/>
+<text x="360" y="40" text-anchor="middle" class="title">Choose a repair hint</text>
+<rect x="60" y="70" width="600" height="80" rx="12" class="box invalid"/>
+<text x="360.0" y="103.0" text-anchor="middle" class="label">Invalid fact under the target ontology</text>
+<text x="360.0" y="131.0" text-anchor="middle" class="detail">Check its relation and endpoint types</text>
+<path d="M60 110 H30 V580" stroke="#52677b" stroke-width="2.5" fill="none"/>
+<path d="M30 270 H54" class="edge"/>
+<rect x="60" y="225" width="600" height="90" rx="12" class="box write"/>
+<text x="360.0" y="263.0" text-anchor="middle" class="label">Removed relation + new matching endpoints</text>
+<text x="360.0" y="291.0" text-anchor="middle" class="detail">Suggest rename; reviewer confirms meaning</text>
+<path d="M30 425 H54" class="edge"/>
+<rect x="60" y="380" width="600" height="90" rx="12" class="box write"/>
+<text x="360.0" y="418.0" text-anchor="middle" class="label">Removed relation + no new match</text>
+<text x="360.0" y="446.0" text-anchor="middle" class="detail">Remove or re-model from supported source facts</text>
+<path d="M30 580 H54" class="edge"/>
+<rect x="60" y="535" width="600" height="90" rx="12" class="box write"/>
+<text x="360.0" y="573.0" text-anchor="middle" class="label">Relation remains, endpoint types changed</text>
+<text x="360.0" y="601.0" text-anchor="middle" class="detail">Revisit source and model; do not invent a new subject</text>
+</svg>

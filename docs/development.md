@@ -13,6 +13,7 @@ Start with [Lab 1](../labs/01-initial-setup.md) and the [architecture](architect
 | Change the answering prompt or agent | [prompts.py](../src/local_graphrag/prompts.py), [agent.py](../src/local_graphrag/agent.py) | [test_agent.py](../tests/test_agent.py), [verify_runtime.py](../scripts/verify_runtime.py) |
 | Add commands or settings | [cli.py](../src/local_graphrag/cli.py), [config.py](../src/local_graphrag/config.py) | CLI help, smoke run |
 | Change service lifecycle | [scripts](../scripts), [compose.yaml](../compose.yaml) | [test_scripts.py](../tests/test_scripts.py) |
+| Change the Lab 9–12 helpers | [scripts/lab_*.py](../scripts) | [test_lab_helpers.py](../tests/test_lab_helpers.py) |
 
 Run `./scripts/test.sh` after every change. Use `./scripts/test.sh --services` when you touch `store.py`; it is rerunnable and leaves the baseline imported. The CLI is the supported write path. `Store.apply` also revalidates against the graph's active ontology. The service test needs a graph on v1: after Lab 6, reset with `./scripts/stop.sh --delete-data && ./scripts/start.sh`, otherwise it is skipped.
 
@@ -57,9 +58,9 @@ Each tool result is appended to the conversation as JSON. A `search_documents` r
 
 ### What the recorded run shows
 
-With `qwen3:8b` and prompt `answering-v1`, the model called only `search_documents` and never `graph_context`, so it never saw the typed `VISITS → Moon` fact as a graph fact. It answered from passage text and listed unsupported "destinations" (hotels, space stations, lunar orbit). Details: [verification](verification.md#recorded-run-13-november-2026).
+The [recorded runs](results.md#recorded-run-13-november-2026) skipped `graph_context` and added unsupported destinations.
 
-**Likely root cause:** the search result already looks sufficient. The `lunar-itinerary` passage contains "Moon surface exploration", and the company passage contains the full service list, so the model has little reason to make a second call. It then reads every place-like phrase in the text as a destination, because only the graph knows that `Moon` is the one `Destination`. Options to try, each measured separately:
+**Likely root cause:** the search result already looks sufficient. The `lunar-itinerary` passage contains "Moon surface exploration", and the company passage contains the full service list, so the model has little reason to make a second call. It then reads every place-like phrase in the text as a destination, although the graph contains only one `Destination`: `Moon`. Options to try, each measured separately:
 
 - **Prompt revision.** Copy the prompt to a new version in [prompts.py](../src/local_graphrag/prompts.py) (e.g. `answering-v2`) that requires `graph_context` before answering about relationships, and says that only graph facts establish entity types such as Destination.
 - **Tool description.** Make the `graph_context` docstring state *when* to call it ("call for every retrieved document before answering questions about relationships or types").
@@ -85,7 +86,7 @@ It uses the question shown in the README, so results stay comparable. These are 
 
 ### Choosing models
 
-- **Chat model** (`OLLAMA_CHAT_MODEL`): must support tool calling in Ollama. Smaller models answer faster but follow multi-step tool instructions less reliably. After switching, run `verify_runtime.py` and compare `tool_calls`. Reasoning models may emit `<think>` blocks; `agent.py` strips them from the answer.
+- **Chat model** (`OLLAMA_CHAT_MODEL`): must support tool calling in Ollama. Measure latency and tool use on your hardware. After switching, run `verify_runtime.py` and compare `tool_calls`. Reasoning models may emit `<think>` blocks; `agent.py` strips them from the answer.
 - **Embedding model** (`OLLAMA_EMBED_MODEL`, `EMBEDDING_DIMENSIONS`): changing either requires a fresh database (`./scripts/stop.sh --delete-data`) and full reimport, because the vector index has fixed dimensions.
 - Raise `ANSWER_TIMEOUT_SECONDS` for slow hardware or large models.
 - Check the license of any replacement model ([licenses](licenses.md#runtime-components-and-model-weights)).
@@ -94,16 +95,10 @@ It uses the question shown in the README, so results stay comparable. These are 
 
 Keep entity IDs stable. A new service name must be added to the `SERVICES` mapping in `prepare.py`; that is not an ontology change. Run `ingest.sh` without `--apply` first and check `added_facts` and `removed_facts` before writing. A new entity type or relation needs a new ontology JSON (`status`, `extends`), an `ontology-diff` review and a `migrate`. Validating against a file does not activate it. New document fields need a change to `DOCUMENT_FIELDS` in `data.py`; never store unvalidated JSON.
 
-## Diagrams
+## Experiments to try
 
-SVGs in [architecture-assets](architecture-assets) and [graphs/assets](graphs/assets) are hand-written sources: 720 px wide, 20–26 px text, short labels, dashed outlines for additions (see each diagram legend). Edit them as text and preview them before committing. Keep them in step with the code.
+1. Revise the prompt or tool description, then compare traces and unsupported claims across Q1–Q4 over several runs.
+2. Replace model-selected tool use with a fixed search → graph expansion chain. Compare answer quality and latency.
+3. Add a source with a new service or training policy. Check which changes belong in the mapping, ontology and facts before importing it.
 
-## Possible extensions
-
-The labs cover deterministic preparation, operator-reviewed updates and additive migration. Further experiments, in priority order:
-
-1. Measure agent graph use and unsupported claims across Q1–Q3, several runs and prompt/model versions; compare with a fixed search → expand chain.
-2. Give MCP a separate read-only database credential.
-3. Persist maintenance diffs and review decisions bound to source hashes before commit.
-4. Evaluate versioned LLM extraction against the curated facts, with evidence per assertion and explicit entity resolution. Route parser failures to mapping review and unsupported claims to evidence review; neither alone justifies an ontology change.
-5. Add migration simulation, consumer/query regression checks and recovery for non-additive changes. Compare incremental updates with a rebuild by correctness, time, tokens and review effort.
+For breaking changes, discovery and regression, follow [Labs 9–12](../labs/README.md#lab-tools-and-data-labs-912).

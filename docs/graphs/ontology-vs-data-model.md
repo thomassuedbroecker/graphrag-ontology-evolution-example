@@ -42,7 +42,7 @@ Since the data model treats every edge the same, **only the ontology carries the
 
 ### Retrieval does not check meaning
 
-`graph_context` expands **one hop in either direction, over any `kind`** ([store.py](../../src/local_graphrag/store.py#L119-L128)). It returns `subject, relation, object` triples, and the answering model reads the dependency from them. If a triple carries the wrong meaning, the agent states it in the answer with a citation that looks valid. Retrieval cannot catch that. Only the ontology check at import time stops it.
+`graph_context` expands **one hop in either direction, over any `kind`** ([store.py](../../src/local_graphrag/store.py)). It returns `subject, relation, object` triples, and the answering model reads the dependency from them. If a triple carries the wrong meaning, the agent states it in the answer with a citation that looks valid. Retrieval cannot catch that. The ontology check rejects invalid types and endpoint combinations. It cannot reject a semantically false fact whose structure is valid; that needs source review.
 
 ### A valid shape with the wrong meaning
 

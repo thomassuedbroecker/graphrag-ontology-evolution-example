@@ -1,8 +1,6 @@
 # Labs: build, change and migrate a GraphRAG graph
 
-Lab set **version 1.0.0** · recorded 13 November 2026 on Apple M4 Max, `qwen3:8b`, `nomic-embed-text` (768 dimensions).
-
-Eight labs, run in order. Each one starts from the graph state the previous lab left behind. Every lab lists the commands, the **expected result** for each step, and the versions before and after.
+Labs 1–8 form the core path; Labs 9–12 are optional extensions. Run them in order: each starts from the previous lab’s graph state. Commands run from the repository root.
 
 | Lab | You do | Ontology | Facts after |
 | --- | --- | --- | --- |
@@ -14,14 +12,32 @@ Eight labs, run in order. Each one starts from the graph state the previous lab 
 | [6. Migrate the existing graph data](06-migrate-graph-data.md) | Move every stored document to v2 | **v2** | 5 |
 | [7. Add the new data](07-add-new-data.md) | Import the training dependency under v2 | v2 | 6 |
 | [8. All questions](08-all-questions.md) | Ask Q1, Q2 and the new Q3 | v2 | 6 |
+| [9. Breaking ontology change](09-breaking-ontology-change.md) | Rename and redefine relations in a v3 proposal; find the invalid facts | v2 (v3 refused) | 6 |
+| [10. Ontology impact analysis](10-ontology-impact-analysis.md) | List the affected entities, facts, documents, questions and code before migrating; gate on it | v2 | 6 |
+| [11. AI-assisted relationship discovery](11-ai-assisted-relationship-discovery.md) | Let the LLM propose cross-document relations; gate, review, import one | v2 | 7 |
+| [12. Validation and regression](12-validation-and-regression.md) | Compare with a reviewed ground truth and a full rebuild; catch a regression | v2 | 7 |
 
-The three questions:
+The four questions (catalog: [questions.json](../data/scenarios/regression/questions.json)):
 
 | ID | Question | Introduced in |
 | --- | --- | --- |
 | Q1 | Which destination can Galaxium Travels customers visit? | Lab 2 |
 | Q2 | Which services does Galaxium Travels offer? | Lab 3 |
 | Q3 | Which training does a Lunar Excursions customer need before departure? | Lab 4 (text only), Lab 8 (graph) |
+| Q4 | Which services take customers to the Moon? | Lab 10 (impact), Lab 11 (graph) |
+
+## Lab tools and data (Labs 9–12)
+
+The four helpers read the graph; discovery also writes proposal files. Import graph changes explicitly with `graphrag ingest` or `graphrag migrate`.
+
+| Script | Lab | Needs |
+| --- | --- | --- |
+| [lab_fact_check.py](../scripts/lab_fact_check.py) | 9 | Neo4j |
+| [lab_impact.py](../scripts/lab_impact.py) | 10 | Neo4j, embedding model (`--no-questions`: Neo4j only) |
+| [lab_discover.py](../scripts/lab_discover.py) | 11 | Neo4j, chat model (`--slots-only`: Neo4j only) |
+| [lab_regression.py](../scripts/lab_regression.py) | 12 | Nothing with `--offline`; Neo4j and embedding model; `--answers` also MCP and chat model |
+
+Shared helpers are in [lab_graph.py](../scripts/lab_graph.py). The data lives next to the other scenarios: [breaking-change](../data/scenarios/breaking-change), [relationship-discovery](../data/scenarios/relationship-discovery) and [regression](../data/scenarios/regression).
 
 ## Prerequisites
 
@@ -31,6 +47,7 @@ Lab 1 lists the tools to install and runs the first start, which downloads the m
 
 - `graphrag inspect`, `ingest` plans and `migrate` plans should match the recorded document revisions and facts with the same files, embedding model name and dimensions (timestamps differ). `graphrag search` always runs retrieval and expansion, but scores and ranking can vary with model artifacts and runtime versions.
 - `graphrag ask` uses a local LLM. Its wording varies from run to run. Each lab says what a correct answer must contain and what to look out for.
+- Every lab ends with **Check yourself**. Try to answer the items first, then open **Show answers** below the list.
 - Excerpts shorten long JSON with `…`. Python warnings from third-party packages are omitted.
 
 ## Everything is versioned
@@ -43,17 +60,10 @@ Lab 1 lists the tools to install and runs the first start, which downloads the m
 | Document history | One `Revision` node per imported or migrated version, with the full JSON snapshot | `graphrag inspect` → `documents[].revisions` |
 | Fact | `RELATION` edge with owning `document_id` and `revision` | `graphrag inspect` → `facts` |
 | Answering prompt | `answering-v1` | `graphrag ask --trace` → `prompt_version` |
-| Lab set | 1.0.0 (this page) | — |
+| Discovery prompt | `discovery-v1` | `lab_discover.py` → `prompt_version` |
+| Ground truth | `1.0.0` | [ground-truth.json](../data/scenarios/regression/ground-truth.json) → `version` |
 
-Graph state after each lab (first 12 characters of each revision):
-
-| After lab | Ontology | company-overview | lunar-itinerary | lunar-training-policy |
-| --- | --- | --- | --- | --- |
-| 1, 2 | 1 | `67b0010436b7` (1 revision) | `4b9e5f32b2f7` (1) | — |
-| 3 | 1 | `dda631181ef7` (2) | `4b9e5f32b2f7` (1) | — |
-| 4, 5 | 1 | `dda631181ef7` (2) | `4b9e5f32b2f7` (1) | `c605d673f7f5` (1) |
-| 6 | 2 | `9ede1e012ffb` (3) | `2e78a4da7fa0` (2) | `506be0ab4d67` (2) |
-| 7, 8 | 2 | `9ede1e012ffb` (3) | `2e78a4da7fa0` (2) | `ee18024d91ef` (3) |
+Each lab’s before/after table shows the expected revisions and fact count. [Lab 12](12-validation-and-regression.md) compares incremental and rebuilt content.
 
 ## Rules for inserting data into the graph
 

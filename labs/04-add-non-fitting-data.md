@@ -56,7 +56,7 @@ Someone tries to "just store the JSON" and puts the dependency in an extra objec
 Rejected under active ontology 1: data/scenarios/training-requirement/unstructured/training.json: Document has fields outside the document format: ['policy']
 ```
 
-This is insertion rule 2 (document format). Before this rule existed, unknown fields were silently ignored by the graph writer, **but stored** in the revision snapshot. The graph then held data that nothing validated or could query. Unknown fields are now an error at every level:
+The fixed document format rejects unknown fields at every level:
 
 | Attempt | Error |
 | --- | --- |
@@ -133,3 +133,12 @@ That is why the dependency needs a graph definition change, not a workaround. La
 - [ ] A and B were rejected without a Python traceback.
 - [ ] C was imported; facts are still 5 and no `Training` type exists.
 - [ ] You can explain why C passed every gate.
+
+<details>
+<summary><b>Show answers</b></summary>
+
+1. A declares v2; B has the unsupported policy field. Both are rejected before import.
+2. C adds a searchable passage with zero facts, so the graph still has five facts and no Training entity.
+3. The validator checks declared structure. It does not extract the dependency from prose or detect its omission.
+
+</details>

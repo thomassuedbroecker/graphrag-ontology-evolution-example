@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="500" viewBox="0 0 720 500" role="img" aria-labelledby="title desc">
+<title id="title">Two services linked to the Moon</title>
+<desc id="desc">Lunar Excursions VISITS Moon is mapped from the itinerary. The Photography Tours edge is added by the separate demo discovery fixture and relies on its stated interpretation.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#52677b"/></marker></defs>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#142c43;font-size:20px}.title{font-size:26px;font-weight:700}.label{font-size:22px;font-weight:600}.detail{font-size:20px}.edge{stroke:#52677b;stroke-width:2.5;fill:none;marker-end:url(#arrow)}.dash{stroke-dasharray:7 5}.box{stroke:#567795;stroke-width:2}.read{fill:#eaf3ff}.write{fill:#fff3df}.store{fill:#e8f5ef}.invalid{fill:#ffebee;stroke:#b42318}</style>
+<rect width="720" height="500" fill="#fff"/>
+<text x="360" y="40" text-anchor="middle" class="title">Two services linked to the Moon</text>
+<rect x="30" y="80" width="300" height="90" rx="12" class="box read"/>
+<text x="180.0" y="118.0" text-anchor="middle" class="label">Lunar Excursions</text>
+<text x="180.0" y="146.0" text-anchor="middle" class="detail">Mapped itinerary fact</text>
+<rect x="390" y="80" width="300" height="90" rx="12" class="box store"/>
+<text x="540.0" y="118.0" text-anchor="middle" class="label">Lunar Photography Tours</text>
+<text x="540.0" y="146.0" text-anchor="middle" class="detail">New demo interpretation</text>
+<path d="M180 170 V300 H270 V354" class="edge"/>
+<path d="M540 170 V300 H450 V354" class="edge"/>
+<text x="195" y="215" text-anchor="start" class="label">VISITS</text>
+<text x="195" y="245" text-anchor="start" class="detail">lunar-itinerary</text>
+<text x="525" y="215" text-anchor="end" class="label">VISITS · new</text>
+<text x="525" y="245" text-anchor="end" class="detail">Discovery fixture</text>
+<rect x="180" y="360" width="360" height="80" rx="12" class="box read"/>
+<text x="360.0" y="393.0" text-anchor="middle" class="label">Moon</text>
+<text x="360.0" y="421.0" text-anchor="middle" class="detail">Destination</text>
+<text x="360" y="480" text-anchor="middle" class="detail">New edge: operator-reviewed demo assumption.</text>
+</svg>

@@ -2,7 +2,7 @@
 
 [← Lab 1](01-initial-setup.md) · [Labs](README.md) · Next: [Lab 3](03-add-fitting-data.md)
 
-**Goal:** ask Q1 and see why it needs the graph. Compare the evidence that is *available* with the evidence the agent *uses*.
+**Goal:** ask Q1 and inspect the cross-document graph connection. Compare the evidence that is *available* with the evidence the agent *uses*.
 
 | | Before | After |
 | --- | --- | --- |
@@ -11,7 +11,7 @@
 
 **Q1:** *Which destination can Galaxium Travels customers visit?*
 
-No single passage answers Q1. `company-overview` says Galaxium **OFFERS** Lunar Excursions. `lunar-itinerary` says Lunar Excursions **VISITS** the Moon. The answer needs both facts.
+The graph joins two facts: `company-overview` says Galaxium **OFFERS** Lunar Excursions, and `lunar-itinerary` says Lunar Excursions **VISITS** the Moon. The passage text also mentions the Moon, so a correct answer alone does not prove graph use.
 
 ## Step 1: Retrieval only (no LLM)
 
@@ -63,3 +63,11 @@ Only `Moon` is a `Destination` in the graph. Anything else the agent calls a des
 
 - [ ] `search` shows the cross-document fact under `company-overview`.
 - [ ] You can tell from `--trace` whether the agent called `graph_context`.
+
+<details>
+<summary><b>Show answers</b></summary>
+
+1. The company document reaches the itinerary’s VISITS fact through the shared lunar-excursions entity.
+2. Only a graph_context entry in tool_calls shows that the agent requested graph facts; search_documents alone returns passages.
+
+</details>

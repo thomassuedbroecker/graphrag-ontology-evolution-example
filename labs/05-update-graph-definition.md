@@ -41,7 +41,7 @@ v2 ([v2.json](../data/ontologies/v2.json)):
 .venv/bin/graphrag ontology-diff data/ontologies/v1.json data/ontologies/v2.json
 ```
 
-`ontology-diff` takes two arguments, both paths to ontology JSON files: `old` (the definition you start from) and `new` (the one you compare against it). It reads only the files. It does not need Neo4j or Ollama and does not change the graph. Running it without both paths fails with `the following arguments are required: old, new`.
+`ontology-diff` takes two arguments, both paths to ontology JSON files: `old` (the definition you start from) and `new` (the one you compare against it). It reads only the files. It does not need Neo4j or Ollama and does not change the graph.
 
 **Expected result:**
 
@@ -59,7 +59,7 @@ v2 ([v2.json](../data/ontologies/v2.json)):
 }
 ```
 
-Read it as a review checklist:
+Interpret the diff:
 
 | Question | Answer from the diff | Consequence |
 | --- | --- | --- |
@@ -91,34 +91,17 @@ Validation only: ontology 2 (approved); the importer follows the graph's active 
 
 **Expected result:** `"ontology": "1"`, three documents, five facts, exactly as after Lab 4. A definition file alone changes nothing. Activation is a migration (Lab 6).
 
-## What would block a migration
-
-`graphrag ontology-diff` also shows non-additive changes. To see one, write a throwaway copy of v2 that redefines `VISITS` as `Company → Destination`, and compare it with v1:
-
-```bash
-mkdir -p .runtime/lab-05
-.venv/bin/python -c '
-import json
-o = json.load(open("data/ontologies/v2.json"))
-o["relations"]["VISITS"] = ["Company", "Destination"]
-json.dump(o, open(".runtime/lab-05/v2-breaking.json", "w"), indent=2)
-'
-.venv/bin/graphrag ontology-diff data/ontologies/v1.json .runtime/lab-05/v2-breaking.json
-```
-
-**Expected result** (shortened):
-
-```json
-"changed_relations": { "VISITS": { "from": ["Service", "Destination"], "to": ["Company", "Destination"] } },
-"unchanged_relations": ["OFFERS"],
-"compatible": false
-```
-
-The copy is in `.runtime`, outside `data/ontologies`, so it never becomes part of the repository's graph definitions.
-
-Existing `Lunar Excursions VISITS Moon` facts would become invalid. This repo refuses such migrations (`Only additive migrations are supported`). They need a rebuild from the sources.
+For a breaking change that removes or redefines relations, continue to [Lab 9](09-breaking-ontology-change.md) after completing Labs 6–8.
 
 ## Check yourself
 
 - [ ] `compatible: true`, one added type, one added relation.
 - [ ] The graph still reports ontology `1`.
+
+<details>
+<summary><b>Show answers</b></summary>
+
+1. Training and REQUIRES are additions; nothing is removed or redefined, so the diff is compatible.
+2. A file and offline validation do not activate an ontology. Lab 6 performs the migration.
+
+</details>

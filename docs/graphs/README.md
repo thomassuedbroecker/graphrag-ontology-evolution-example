@@ -3,11 +3,11 @@
 | Version | Adds | Status | Page |
 | --- | --- | --- | --- |
 | v1 | Company, Service, Destination; OFFERS, VISITS | Baseline: active in a new graph (Labs 1–5) | [v1](v1.md) |
-| v2 | Training; REQUIRES | Approved, extends v1: active after migration (Labs 6–8) | [v2](v2.md) |
+| v2 | Training; REQUIRES | Approved, extends v1: active after migration (Labs 6–12) | [v2](v2.md) |
 
 ![Version dependencies: v1 supports baseline and data changes; approved v2 extends v1 with training and becomes active by migration.](assets/versions.svg)
 
-Adding or retiring a service changes **data** under v1, not the ontology version. Each ontology is a JSON file in [data/ontologies](../../data/ontologies); a new graph starts on [v1.json](../../data/ontologies/v1.json). The graph records its active version as an `Ontology` node, and the importer validates against that version. `graphrag inspect` shows it; `graphrag migrate` changes it ([Lab 6](../../labs/06-migrate-graph-data.md)).
+Adding a service changes **data** under v1, not the ontology version. Replacing a document can remove its owned facts; deleting a document is not implemented. Each ontology is a JSON file in [data/ontologies](../../data/ontologies); a new graph starts on [v1.json](../../data/ontologies/v1.json). The graph records its active version as an `Ontology` node, and the importer validates against that version. `graphrag inspect` shows it; `graphrag migrate` changes it ([Lab 6](../../labs/06-migrate-graph-data.md)).
 
 The ontology (what a dependency **means**) is not the same as the Neo4j data model (how it is **stored**). See [ontology vs data model](ontology-vs-data-model.md).
 
@@ -38,14 +38,3 @@ Types and relation kinds are properties, not Neo4j labels. The [architecture](..
 2. `graph_context` starts from a retrieved document's mentioned entities and returns facts one hop away, including facts owned by **other** documents. That is how the company passage reaches the lunar fact.
 
 The agent is *asked* to do both steps in order; the model decides (dashed in the diagram). `graphrag search` always does both. Real tool outputs: [data lineage](../data-lineage.md#6-search-question--passages).
-
-## Who does what
-
-| Stage | Actor | Notes |
-| --- | --- | --- |
-| Ingest and update | Operator with CLI: prepare → validate → plan → apply | Deterministic; no AI agent writes |
-| Ontology change | Operator / model owner | `ontology-diff` review, approval in the file, `migrate` plan then `--apply` (additive only) |
-| Answer questions | LangChain agent with ChatOllama and two read-only MCP tools | Cannot write |
-| Run services | Operator with shell scripts | Not an AI agent |
-
-When adding an ontology version, add a page like [v2](v2.md): purpose, status, ontology diagram, relation endpoints, document inventory, and who ingests and operates it.

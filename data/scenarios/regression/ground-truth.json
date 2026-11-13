@@ -1,0 +1,104 @@
+{
+  "version": "1.0.0",
+  "description": "Reviewed expected graph state after Lab 11; the reference for Lab 12 regression checks",
+  "review": {
+    "reviewed_on": "2026-11-13",
+    "method": [
+      "Every fact traced to a sentence in a source file or a reviewed curated document",
+      "Rebuilt offline from the sources below (regression.py --offline) and compared field by field",
+      "Compared with the live graph after Labs 1-11 (regression.py)"
+    ],
+    "scope": "Synthetic demo data; no claim of production or legal validation"
+  },
+  "embedding": {
+    "model": "nomic-embed-text",
+    "dimensions": 768
+  },
+  "ontology": {
+    "version": "2",
+    "file": "data/ontologies/v2.json"
+  },
+  "rebuild": [
+    {
+      "prepare": "data/scenarios/new-service/company-overview.md"
+    },
+    {
+      "documents": "data/scenarios/training-requirement/candidates"
+    },
+    {
+      "documents": "data/scenarios/relationship-discovery/reviewed"
+    }
+  ],
+  "documents": {
+    "company-overview": "9ede1e012ffb",
+    "discovered-lunar-photography-tours-visits-moon": "0c4b479b4a38",
+    "lunar-itinerary": "2e78a4da7fa0",
+    "lunar-training-policy": "ee18024d91ef"
+  },
+  "facts": [
+    "galaxium OFFERS lunar-excursions  [company-overview]",
+    "galaxium OFFERS lunar-photography-tours  [company-overview]",
+    "galaxium OFFERS orbital-flights  [company-overview]",
+    "galaxium OFFERS space-hotel-stays  [company-overview]",
+    "lunar-excursions REQUIRES lunar-surface-safety  [lunar-training-policy]",
+    "lunar-excursions VISITS moon  [lunar-itinerary]",
+    "lunar-photography-tours VISITS moon  [discovered-lunar-photography-tours-visits-moon]"
+  ],
+  "entity_types": {
+    "Company": 1,
+    "Destination": 1,
+    "Service": 4,
+    "Training": 1
+  },
+  "questions": [
+    {
+      "id": "Q1",
+      "top_document": "company-overview",
+      "graph_facts": [
+        "Lunar Excursions VISITS Moon",
+        "Lunar Photography Tours VISITS Moon"
+      ],
+      "answer_terms": [
+        "Moon"
+      ]
+    },
+    {
+      "id": "Q2",
+      "top_document": "company-overview",
+      "graph_facts": [
+        "Galaxium Travels OFFERS Orbital Flights",
+        "Galaxium Travels OFFERS Lunar Excursions",
+        "Galaxium Travels OFFERS Space Hotel Stays",
+        "Galaxium Travels OFFERS Lunar Photography Tours"
+      ],
+      "answer_terms": [
+        "Orbital Flights",
+        "Lunar Excursions",
+        "Space Hotel Stays",
+        "Lunar Photography Tours"
+      ]
+    },
+    {
+      "id": "Q3",
+      "top_document": "lunar-training-policy",
+      "graph_facts": [
+        "Lunar Excursions REQUIRES Lunar Surface Safety"
+      ],
+      "answer_terms": [
+        "Lunar Surface Safety"
+      ]
+    },
+    {
+      "id": "Q4",
+      "top_document": "company-overview",
+      "graph_facts": [
+        "Lunar Excursions VISITS Moon",
+        "Lunar Photography Tours VISITS Moon"
+      ],
+      "answer_terms": [
+        "Lunar Excursions",
+        "Lunar Photography Tours"
+      ]
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # Architecture
 
-This page describes what is implemented and why. Possible extensions are listed in the [developer guide](development.md#possible-extensions). Limitations are listed once in the [README](../README.md#limitations).
+The two paths below share Neo4j and Ollama. See the [limitations](../README.md#limitations) before extending the example.
 
 ## Principle: separate reading from writing
 
@@ -22,7 +22,7 @@ The answering agent **reads** knowledge. A separate, operator-driven maintenance
 
 ## Graph storage model
 
-![Document MENTIONS Entity; Entity RELATION Entity with a kind; Document HAS_REVISION Revision.](graphs/assets/graph-model.svg)
+The [storage diagram and field guide](graphs/README.md#how-it-is-stored) show how documents, entities and revisions connect.
 
 **Design decision: generic `Entity` and `RELATION`.** Domain types (Company, Service…) are the `Entity.type` property, and domain relations (OFFERS, VISITS) are the `RELATION.kind` property, not Neo4j labels or relationship types.
 
@@ -34,8 +34,6 @@ The answering agent **reads** knowledge. A separate, operator-driven maintenance
 
 ### Setup and update under v1
 
-![Setup: preserve sources, prepare candidates, validate and review, then build and verify the graph.](architecture-assets/setup.svg)
-
 `graphrag prepare` → `graphrag validate` → `ingest.sh` (plan with fact diff) → `ingest.sh --apply`. The [data lineage](data-lineage.md) shows the real data after each step. The importer:
 
 1. validates **all** documents before touching the database;
@@ -46,21 +44,21 @@ The answering agent **reads** knowledge. A separate, operator-driven maintenance
 
 A repeat import of identical data reports every document `unchanged` and writes nothing. `start.sh` reapplies the two baseline documents while the graph is on v1: it can undo the service update, but does not delete extra documents or revision history. On v2 it skips that import. Continue the labs without restarting between steps; use `stop.sh --delete-data` for a complete reset.
 
-![An in-model source change passes evidence and ontology checks before a controlled update and verification.](architecture-assets/update.svg)
-
 A new service name (Lunar Photography Tours) is a new **instance** of Service and fits v1. A new name is not a new type.
 
 ### Ask
 
-![Use: a read-only answering agent retrieves evidence through MCP and returns a cited answer.](architecture-assets/use.svg)
-
-The prompt asks for `search_documents` first, then `graph_context`, and to cite `document_id` and `source`. The model decides whether to follow it. Measured behaviour is in [verification](verification.md#recorded-run-13-november-2026).
+The [retrieval diagram](graphs/README.md#how-retrieval-uses-the-graph) shows the two read steps. The prompt asks for `search_documents` first, then `graph_context`, and to cite `document_id` and `source`. The model decides whether to follow it. Measured behaviour is in [experiment results](results.md#recorded-run-13-november-2026).
 
 ### Data that needs a new ontology
 
 A source says Lunar Excursions *requires* Lunar Surface Safety training. That needs a Training type and a REQUIRES relation, so v1 rejects it. Free-form JSON carrying the same information is rejected too: documents have a fixed set of fields. [v2](../data/ontologies/v2.json) adds exactly those two elements, is `approved` and `extends` v1.
 
-The graph stores its active definition as an `Ontology` node; the importer validates against it, not against a built-in version. `graphrag migrate` refuses unless the target is approved, extends the active version and is additive. It then relabels and revalidates every current revision snapshot, writes new `Revision` nodes, and switches the active `Ontology` in one transaction. Embeddings are reused because the text does not change. Non-additive changes, simulation on a snapshot and approval records remain [possible extensions](development.md#possible-extensions). Walkthrough: [Labs 4–7](../labs/README.md).
+The graph stores its active definition as an `Ontology` node; the importer validates against it, not against a built-in version. `graphrag migrate` refuses unless the target is approved, extends the active version and is additive. It then relabels and revalidates every current revision snapshot, writes new `Revision` nodes, and switches the active `Ontology` in one transaction. Embeddings are reused because the text does not change. Lab 10 checks current snapshots against a proposed ontology without applying it. Breaking changes require a rebuild; migration simulation and approval records are not implemented. Walkthrough: [Labs 4–7](../labs/README.md).
+
+### Optional experiments (Labs 9–12)
+
+The helpers in `scripts/lab_*.py` read current revision snapshots: they check facts against a target ontology, report impact, propose relationships with an LLM, and compare the graph with reference fixtures. They are teaching tools outside the application CLI. Discovery writes proposal files only; ingestion remains an explicit operator action. Regression rebuilds expected content in memory with `--offline`; the live path separately checks Neo4j and retrieval.
 
 ## Security boundaries
 
@@ -70,15 +68,3 @@ The graph stores its active definition as an `Ontology` node; the importer valid
 - The MCP HTTP endpoint has no authentication: any local process can call its two read-only tools. Acceptable on loopback for a demo; not for a shared host.
 - MCP and importer share one database credential. A production design would use a read-only database role for MCP.
 - The `.env.example` password is a demo value, acceptable only because Neo4j is loopback-only.
-
-## Requirements traceability
-
-| ID | Requirement | Status | Test |
-| --- | --- | --- | --- |
-| REQ-001 | Setup validates against v1, then imports 3 OFFERS + 1 VISITS | Implemented | `test_architecture_data`, `test_services` |
-| REQ-002 | Answers use graph/vector evidence with citations; no write tools | Tools implemented; answer quality **not met** in the recorded run | `test_mcp`, `verify_runtime.py` |
-| REQ-003 | Adding a service changes only the company document, adds one OFFERS; repeat is a no-op | Implemented | `test_architecture_data`, `test_services` |
-| REQ-004 | Training data is blocked by v1 and routed to model review | Implemented (routing is manual) | `test_architecture_data` |
-| REQ-005 | Every assertion has a stable ID and a traceable source (`source` anchor + `source_version` hash); explicit evidence quotes are validated when present | Implemented. Evidence quotes exist only in the training candidate; baseline facts rely on the excerpt hash and a reviewed mapping | `test_data`, `test_prepare`, `test_architecture_data` |
-| REQ-006 | Ontology release needs diff, simulation, approval and recovery | Partly: `ontology-diff`, `approved` status + `extends`, atomic additive `migrate` (Labs 5–6, verified live). Simulation, persisted approval and down-migration not implemented | `test_architecture_data` |
-| REQ-008 | Only the fixed document format can be inserted; free-form JSON and extra properties are rejected | Implemented | `test_data`, `test_architecture_data` |

@@ -1,14 +1,6 @@
-# Verification
+# Experiment results
 
-## Status on 13 November 2026
-
-| Check | Result |
-| --- | --- |
-| Local tests (`./scripts/test.sh`) | 24 passed, 1 skipped (service test) |
-| Service test (`./scripts/test.sh --services`): import, no-op repeat, plan fact diff, rollback, new service, restore | Passed |
-| Retrieval and graph expansion (`graphrag search`) | Passed |
-| Agent tool use and answer (`verify_runtime.py`) | **Failed**: `graph_context` not called. Citation and missing-evidence checks passed in run 3 |
-| Diagram rendering | All SVGs rendered and checked at 720 px |
+Retrieval can find the right facts while the answering model still skips the graph. Compare the tool trace with the answer, not just whether the answer mentions the Moon.
 
 ## Recorded run (13 November 2026)
 
@@ -34,7 +26,7 @@ The cross-document hop works as designed.
 
 No run called `graph_context`. Only Moon is a `Destination` in the graph, so the extra "destinations" are unsupported. Answers varied between runs despite temperature 0. One answer took about 24 s.
 
-**Conclusion:** the recorded data and retrieval checks support REQ-001 and REQ-003, and the agent reports missing evidence. It does not yet meet REQ-002 with this model and prompt, because it never uses the graph. Next steps are in the [AI engineer guide](development.md#what-the-recorded-run-shows).
+**What this teaches:** deterministic retrieval reaches the cross-document fact, but prompting alone does not ensure the agent uses it. A citation and a correct keyword can coexist with unsupported claims. Next steps are in the [AI engineer guide](development.md#what-the-recorded-run-shows).
 
 ## Repeat the checks
 
@@ -46,10 +38,4 @@ No run called `graph_context`. Only Moon is a `Destination` in the graph, so the
 
 The service test modifies documents and restores the baseline at the end. Run it only against the demo database. It can be rerun; `./scripts/stop.sh --delete-data` gives a completely fresh database.
 
-`verify_runtime.py` writes a JSON report to `.runtime/verification/` (ignored by Git). It includes versions, model IDs, `doctor`, retrieval, a traced answer and a traced absence-question answer. It exits nonzero if any check fails. Read the answer yourself as well: the checks are smoke tests, not a grounding evaluation. When publishing, copy reviewed excerpts with hardware details; never include credentials.
-
-## Repository review (13 November 2026)
-
-The local suite was rerun: **24 passed, 1 service test skipped**. One process-lifecycle test failed under sandbox restrictions and passed when rerun outside the sandbox. The 107-package installed license inventory matches the checked-in inventory. Service tests and LLM evaluation were not rerun in this review; the measurements above are earlier recorded results.
-
-SVG sources use a 720 px canvas and 20–26 px labels, suitable for a roughly 800 px article column without shrinking the text. Links and XML are checked locally. A browser was unavailable for this review, so embedded visual readability was not reverified. Neo4j screenshots contain truncated labels: use their captions and `inspect` output to identify facts; use SVGs for explanatory blog figures.
+`verify_runtime.py` writes a JSON report to `.runtime/verification/` (ignored by Git). It includes versions, model IDs, `doctor`, retrieval, a traced answer and a traced absence-question answer. It exits nonzero if any check fails. Read the answer yourself as well: the checks are smoke tests, not a grounding evaluation.

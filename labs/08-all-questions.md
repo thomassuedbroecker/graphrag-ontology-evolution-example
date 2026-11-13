@@ -1,6 +1,6 @@
 # Lab 8: The initial question, the new question and the newest question
 
-[← Lab 7](07-add-new-data.md) · [Labs](README.md)
+[← Lab 7](07-add-new-data.md) · [Labs](README.md) · Next: [Lab 9](09-breaking-ontology-change.md)
 
 **Goal:** ask all three questions against the final graph and compare with the earlier labs.
 
@@ -67,23 +67,19 @@ The Q3 answer text is the same in both labs. The graph is not:
 
 The new fact is now available **from every document that mentions Lunar Excursions**. That is the point of modelling the dependency instead of leaving it in text.
 
-## Summary of all labs
-
-| Lab | Ontology | Facts | What changed |
-| --- | --- | --- | --- |
-| 1 | 1 | 4 | Baseline imported |
-| 2 | 1 | 4 | — (questions only) |
-| 3 | 1 | 5 | `+ galaxium OFFERS lunar-photography-tours` |
-| 4 | 1 | 5 | `lunar-training-policy` passage; dependency rejected or text-only |
-| 5 | 1 | 5 | v2 definition compared, approved, not active |
-| 6 | 2 | 5 | All documents migrated; facts unchanged |
-| 7 | 2 | 6 | `+ lunar-excursions REQUIRES lunar-surface-safety` |
-| 8 | 2 | 6 | — (questions only) |
-
 ## Check yourself
 
 - [ ] Q1 and Q2 answers are unchanged from Lab 3.
 - [ ] `REQUIRES` appears under all three documents in the Q3 `search`.
 - [ ] Note whether your agent called `graph_context` this time. If it did not, the graph evidence was available but unused (see Lab 2).
 
-Start over: [Reset](README.md#reset).
+<details>
+<summary><b>Show answers</b></summary>
+
+1. Q1 still needs Moon; Q2 still needs the four services. Check content rather than identical wording.
+2. All three documents mention Lunar Excursions, so their context can reach REQUIRES.
+3. Inspect tool_calls: available graph evidence is used only if the agent calls graph_context.
+
+</details>
+
+Labs 9–12 continue from this state: breaking changes, impact analysis, AI-assisted discovery and regression checks. To start over instead: [Reset](README.md#reset).
