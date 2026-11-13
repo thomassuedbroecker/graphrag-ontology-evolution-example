@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="818" viewBox="0 0 720 818" role="img" aria-label="Update data within ontology v1">
+  <title>Update data within ontology v1</title>
+  <desc>A changed source adds Lunar Photography Tours as a new Service instance under ontology v1. The plan lists added and removed facts, the operator approves, the import changes only the company document, and a repeat import is a no-op.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10Z" fill="#52677b" />
+    </marker>
+  </defs>
+  <style>text{font-family:Arial,Helvetica,sans-serif;fill:#142c43}.title{font-size:26px;font-weight:700}.label{font-size:24px;font-weight:600}.detail{font-size:20px}.edge{stroke:#52677b;stroke-width:2.5;fill:none;marker-end:url(#arrow)}</style>
+  <rect width="720" height="818" fill="#fff" />
+  <text x="360" y="39" text-anchor="middle" class="title">Update data within ontology v1</text>
+  <rect x="40" y="66" width="640" height="94" rx="12" fill="#eaf3ff" stroke="#567795" stroke-width="2" />
+  <text x="360.0" y="103" text-anchor="middle" class="label">Changed source</text>
+  <text x="360.0" y="135" text-anchor="middle" class="detail">Add Lunar Photography Tours</text>
+  <path class="edge" d="M360 161 V202" />
+  <rect x="40" y="206" width="640" height="94" rx="12" fill="#eaf3ff" stroke="#567795" stroke-width="2" />
+  <text x="360.0" y="243" text-anchor="middle" class="label">Prepare and resolve</text>
+  <text x="360.0" y="275" text-anchor="middle" class="detail">A new Service instance; same model</text>
+  <path class="edge" d="M360 301 V342" />
+  <rect x="40" y="346" width="640" height="94" rx="12" fill="#eaf3ff" stroke="#567795" stroke-width="2" />
+  <text x="360.0" y="383" text-anchor="middle" class="label">Validate and inspect diff</text>
+  <text x="360.0" y="415" text-anchor="middle" class="detail">Plan lists +1 OFFERS; operator approves</text>
+  <path class="edge" d="M360 441 V482" />
+  <rect x="40" y="486" width="640" height="94" rx="12" fill="#eaf3ff" stroke="#567795" stroke-width="2" />
+  <text x="360.0" y="523" text-anchor="middle" class="label">Commit data and vectors</text>
+  <text x="360.0" y="555" text-anchor="middle" class="detail">Company changes; lunar stays unchanged</text>
+  <path class="edge" d="M360 581 V622" />
+  <rect x="40" y="626" width="640" height="94" rx="12" fill="#eaf3ff" stroke="#567795" stroke-width="2" />
+  <text x="360.0" y="663" text-anchor="middle" class="label">Verify and repeat</text>
+  <text x="360.0" y="695" text-anchor="middle" class="detail">Expected edges, retrieval and no-op import</text>
+  <text x="360" y="794" text-anchor="middle" class="detail">Current: prepare, plan, import. Approval: manual.</text>
+</svg>

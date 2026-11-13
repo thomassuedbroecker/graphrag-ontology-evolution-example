@@ -1,0 +1,47 @@
+{
+  "id": "company-overview",
+  "title": "Galaxium Travels primary services",
+  "source": "galaxium:company-overview#primary-services",
+  "ontology_version": "1",
+  "source_version": "0a8bbbbe952bea0fb964cead05ed7bef318b91844e883c4a7f80c4ef1b6d0541",
+  "text": "Galaxium Travels offers these primary services:\n- Orbital Flights\n- Lunar Excursions\n- Space Hotel Stays\n\nSource excerpt:\n- Orbital Flights 1.\n- 3-day luxury space station experience \u25e6\n- Zero-gravity activities \u25e6\n- Earth observation opportunities \u25e6\n- Lunar Excursions 2.\n- 7-day lunar orbit packages \u25e6\n- Moon surface exploration \u25e6\n- Luxury accommodations in lunar orbit \u25e6\n- Space Hotel Stays 3.\n- Extended stays in our orbital luxury hotel \u25e6\n- Customized space experiences \u25e6\n- Professional space photography \u25e6",
+  "entities": [
+    {
+      "id": "galaxium",
+      "name": "Galaxium Travels",
+      "type": "Company"
+    },
+    {
+      "id": "orbital-flights",
+      "name": "Orbital Flights",
+      "type": "Service"
+    },
+    {
+      "id": "lunar-excursions",
+      "name": "Lunar Excursions",
+      "type": "Service"
+    },
+    {
+      "id": "space-hotel-stays",
+      "name": "Space Hotel Stays",
+      "type": "Service"
+    }
+  ],
+  "facts": [
+    {
+      "subject": "galaxium",
+      "relation": "OFFERS",
+      "object": "orbital-flights"
+    },
+    {
+      "subject": "galaxium",
+      "relation": "OFFERS",
+      "object": "lunar-excursions"
+    },
+    {
+      "subject": "galaxium",
+      "relation": "OFFERS",
+      "object": "space-hotel-stays"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="690" viewBox="0 0 720 690" role="img" aria-label="Read and write responsibilities">
+  <title>Read and write responsibilities</title>
+  <desc>The answering agent reads through read-only MCP tools and calls the Ollama chat model. The maintenance workflow validates before writing to Neo4j. Ollama embeds questions for search and documents for import. An approved, additive ontology change is applied by migrating stored documents.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10Z" fill="#52677b" />
+    </marker>
+  </defs>
+  <style>text{font-family:Arial,Helvetica,sans-serif;fill:#142c43}.title{font-size:26px;font-weight:700}.label{font-size:24px;font-weight:600}.detail{font-size:20px}.edge{stroke:#52677b;stroke-width:2.5;fill:none;marker-end:url(#arrow)}.dash{stroke-dasharray:7 5}</style>
+  <rect width="720" height="690" fill="#fff" />
+  <text x="360" y="39" text-anchor="middle" class="title">Read and write responsibilities</text>
+  <rect x="24" y="70" width="324" height="94" rx="12" fill="#eaf3ff" stroke="#567795" stroke-width="2" />
+  <text x="186" y="107" text-anchor="middle" class="label">Answering agent</text>
+  <text x="186" y="139" text-anchor="middle" class="detail">Questions and citations</text>
+  <rect x="372" y="70" width="324" height="94" rx="12" fill="#fff3df" stroke="#567795" stroke-width="2" />
+  <text x="534" y="107" text-anchor="middle" class="label">Maintenance workflow</text>
+  <text x="534" y="139" text-anchor="middle" class="detail">Source and model changes</text>
+  <rect x="60" y="220" width="288" height="94" rx="12" fill="#eaf3ff" stroke="#567795" stroke-width="2" />
+  <text x="204" y="257" text-anchor="middle" class="label">MCP read-only tools</text>
+  <text x="204" y="289" text-anchor="middle" class="detail">Passages and graph facts</text>
+  <rect x="372" y="220" width="324" height="94" rx="12" fill="#fff3df" stroke="#567795" stroke-width="2" />
+  <text x="534" y="257" text-anchor="middle" class="label">Validate before writing</text>
+  <text x="534" y="289" text-anchor="middle" class="detail">Import and additive migration</text>
+  <path class="edge" d="M186 165 V214" />
+  <path class="edge" d="M36 165 V524" />
+  <text class="detail" x="44" y="430">chat</text>
+  <path class="edge" d="M534 165 V214" />
+  <path class="edge" d="M186 315 V355 H300 V374" />
+  <path class="edge" d="M534 315 V355 H420 V374" />
+  <text class="detail" x="222" y="346">read</text>
+  <text class="detail" x="446" y="346">write</text>
+  <rect x="200" y="380" width="320" height="94" rx="12" fill="#e8f5ef" stroke="#567795" stroke-width="2" />
+  <text x="360" y="417" text-anchor="middle" class="label">Neo4j</text>
+  <text x="360" y="449" text-anchor="middle" class="detail">Graph facts and vectors</text>
+  <path class="edge dash" d="M90 315 V524" />
+  <path class="edge dash" d="M630 315 V524" />
+  <text class="detail" x="100" y="505">embed question</text>
+  <text class="detail" x="620" y="505" text-anchor="end">embed documents</text>
+  <rect x="24" y="530" width="672" height="94" rx="12" fill="#f3effa" stroke="#567795" stroke-width="2" />
+  <text x="360" y="567" text-anchor="middle" class="label">Ollama local models</text>
+  <text x="360" y="599" text-anchor="middle" class="detail">Agent chat model; embeddings for search and import</text>
+  <text x="360" y="664" text-anchor="middle" class="detail">Implemented: answering, import and additive migration.</text>
+</svg>

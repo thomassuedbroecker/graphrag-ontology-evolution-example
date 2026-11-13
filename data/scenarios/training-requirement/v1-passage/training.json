@@ -1,0 +1,16 @@
+{
+  "id": "lunar-training-policy",
+  "title": "Lunar Excursions training requirement",
+  "source": "galaxium:lunar-training-policy",
+  "source_version": "5dac6734e8a8f6bf3522914ef558bfc9f741aecc0ae7206932ec190cdd3d9511",
+  "ontology_version": "1",
+  "text": "Lunar Excursions requires completion of Lunar Surface Safety training before departure.",
+  "entities": [
+    {
+      "id": "lunar-excursions",
+      "name": "Lunar Excursions",
+      "type": "Service"
+    }
+  ],
+  "facts": []
+}

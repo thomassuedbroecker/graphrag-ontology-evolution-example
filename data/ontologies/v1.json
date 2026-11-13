@@ -1,0 +1,19 @@
+{
+  "version": "1",
+  "status": "baseline",
+  "entity_types": [
+    "Company",
+    "Destination",
+    "Service"
+  ],
+  "relations": {
+    "OFFERS": [
+      "Company",
+      "Service"
+    ],
+    "VISITS": [
+      "Service",
+      "Destination"
+    ]
+  }
+}

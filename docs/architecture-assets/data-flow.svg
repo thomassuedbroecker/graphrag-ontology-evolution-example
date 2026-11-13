@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="940" viewBox="0 0 720 940" role="img" aria-labelledby="title desc">
+  <title id="title">Data after each step</title>
+  <desc id="desc">Eight steps for the new-service scenario. Maintenance: Markdown section, prepared JSON documents, validation, a plan with the fact diff, and the Neo4j write with embeddings and a revision. Answering: passages with scores, one-hop graph facts (the model may skip this step), and the traced answer.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10Z" fill="#52677b" />
+    </marker>
+  </defs>
+  <style>text{font-family:Arial,Helvetica,sans-serif;fill:#142c43}.title{font-size:26px;font-weight:700}.head{font-size:20px;font-weight:700;fill:#52677b}.label{font-size:22px;font-weight:600}.detail{font-size:20px}.edge{stroke:#52677b;stroke-width:2.5;fill:none;marker-end:url(#arrow)}.dash{stroke-dasharray:7 5}.box{stroke:#567795;stroke-width:2}.write{fill:#fff3df}.store{fill:#e8f5ef}.read{fill:#eaf3ff}</style>
+  <rect width="720" height="940" fill="#fff" />
+  <text x="360" y="39" text-anchor="middle" class="title">Data after each step</text>
+  <text x="129" y="84" text-anchor="middle" class="head">Step and command</text>
+  <text x="477" y="84" text-anchor="middle" class="head">Data after the step (new service)</text>
+
+  <rect x="24" y="104" width="210" height="80" rx="12" class="box write" />
+  <text x="129" y="138" text-anchor="middle" class="label">1 · Source</text>
+  <text x="129" y="166" text-anchor="middle" class="detail">input Markdown</text>
+  <rect x="258" y="104" width="438" height="80" rx="12" class="box write" />
+  <text x="477" y="138" text-anchor="middle" class="label">Primary Services section</text>
+  <text x="477" y="166" text-anchor="middle" class="detail">+ Lunar Photography Tours 4.</text>
+  <path class="edge" d="M129 185 V198" />
+
+  <rect x="24" y="200" width="210" height="80" rx="12" class="box write" />
+  <text x="129" y="234" text-anchor="middle" class="label">2 · Prepare</text>
+  <text x="129" y="262" text-anchor="middle" class="detail">graphrag prepare</text>
+  <rect x="258" y="200" width="438" height="80" rx="12" class="box write" />
+  <text x="477" y="234" text-anchor="middle" class="label">JSON: company, lunar</text>
+  <text x="477" y="262" text-anchor="middle" class="detail">+1 entity, +1 OFFERS fact, new hash</text>
+  <path class="edge" d="M129 281 V294" />
+
+  <rect x="24" y="296" width="210" height="80" rx="12" class="box write" />
+  <text x="129" y="330" text-anchor="middle" class="label">3 · Validate</text>
+  <text x="129" y="358" text-anchor="middle" class="detail">graphrag validate</text>
+  <rect x="258" y="296" width="438" height="80" rx="12" class="box write" />
+  <text x="477" y="330" text-anchor="middle" class="label">Same JSON, accepted</text>
+  <text x="477" y="358" text-anchor="middle" class="detail">types, endpoints, evidence quotes</text>
+  <path class="edge" d="M129 377 V390" />
+
+  <rect x="24" y="392" width="210" height="80" rx="12" class="box write" />
+  <text x="129" y="426" text-anchor="middle" class="label">4 · Plan</text>
+  <text x="129" y="454" text-anchor="middle" class="detail">ingest.sh</text>
+  <rect x="258" y="392" width="438" height="80" rx="12" class="box write" />
+  <text x="477" y="426" text-anchor="middle" class="label">Action and fact diff</text>
+  <text x="477" y="454" text-anchor="middle" class="detail">company update +1; lunar unchanged</text>
+  <path class="edge" d="M129 473 V486" />
+
+  <rect x="24" y="488" width="210" height="80" rx="12" class="box store" />
+  <text x="129" y="522" text-anchor="middle" class="label">5 · Apply</text>
+  <text x="129" y="550" text-anchor="middle" class="detail">ingest.sh --apply</text>
+  <rect x="258" y="488" width="438" height="80" rx="12" class="box store" />
+  <text x="477" y="522" text-anchor="middle" class="label">Neo4j graph and vectors</text>
+  <text x="477" y="550" text-anchor="middle" class="detail">new embedding, edges, Revision</text>
+  <path class="edge" d="M129 569 V582" />
+
+  <rect x="24" y="584" width="210" height="80" rx="12" class="box read" />
+  <text x="129" y="618" text-anchor="middle" class="label">6 · Search</text>
+  <text x="129" y="646" text-anchor="middle" class="detail">search_documents</text>
+  <rect x="258" y="584" width="438" height="80" rx="12" class="box read" />
+  <text x="477" y="618" text-anchor="middle" class="label">Passages with scores</text>
+  <text x="477" y="646" text-anchor="middle" class="detail">company-overview 0.86, lunar 0.85</text>
+  <path class="edge dash" d="M129 665 V678" />
+
+  <rect x="24" y="680" width="210" height="80" rx="12" class="box read dash" />
+  <text x="129" y="714" text-anchor="middle" class="label">7 · Expand</text>
+  <text x="129" y="742" text-anchor="middle" class="detail">graph_context</text>
+  <rect x="258" y="680" width="438" height="80" rx="12" class="box read dash" />
+  <text x="477" y="714" text-anchor="middle" class="label">One-hop facts</text>
+  <text x="477" y="742" text-anchor="middle" class="detail">Lunar Excursions VISITS Moon</text>
+  <path class="edge dash" d="M129 761 V774" />
+
+  <rect x="24" y="776" width="210" height="80" rx="12" class="box read" />
+  <text x="129" y="810" text-anchor="middle" class="label">8 · Answer</text>
+  <text x="129" y="838" text-anchor="middle" class="detail">ask --trace</text>
+  <rect x="258" y="776" width="438" height="80" rx="12" class="box read" />
+  <text x="477" y="810" text-anchor="middle" class="label">Trace JSON</text>
+  <text x="477" y="838" text-anchor="middle" class="detail">prompt, tool calls, cited answer</text>
+
+  <text x="360" y="892" text-anchor="middle" class="detail">Orange: maintenance. Green: database. Blue: answering.</text>
+  <text x="360" y="920" text-anchor="middle" class="detail">Dashed: the model decides; skipped in recorded runs.</text>
+</svg>

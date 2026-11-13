@@ -1,0 +1,27 @@
+{
+  "id": "lunar-itinerary",
+  "title": "Galaxium Travels lunar service",
+  "source": "galaxium:company-overview#lunar-excursions",
+  "ontology_version": "1",
+  "source_version": "0cdd86213bed31ff4b85c41a869d0ff0ac8dff8afbca8b514efc2b5fd95dd3cd",
+  "text": "Galaxium Travels Lunar Excursions:\n- Lunar Excursions 2.\n- 7-day lunar orbit packages \u25e6\n- Moon surface exploration \u25e6\n- Luxury accommodations in lunar orbit \u25e6",
+  "entities": [
+    {
+      "id": "lunar-excursions",
+      "name": "Lunar Excursions",
+      "type": "Service"
+    },
+    {
+      "id": "moon",
+      "name": "Moon",
+      "type": "Destination"
+    }
+  ],
+  "facts": [
+    {
+      "subject": "lunar-excursions",
+      "relation": "VISITS",
+      "object": "moon"
+    }
+  ]
+}

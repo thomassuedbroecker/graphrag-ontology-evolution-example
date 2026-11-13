@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="470" viewBox="0 0 720 470" role="img" aria-label="Physical Neo4j model">
+  <title>Physical Neo4j model</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10Z" fill="#52677b" />
+    </marker>
+  </defs>
+  <style>text{font-family:Arial,Helvetica,sans-serif;fill:#142c43}.title{font-size:26px;font-weight:700}.label{font-size:24px;font-weight:600}.detail{font-size:20px}.edge{stroke:#52677b;stroke-width:2.5;fill:none;marker-end:url(#arrow)}.dash{stroke-dasharray:7 5}</style>
+  <rect width="720" height="470" fill="#fff" />
+  <text x="360" y="39" text-anchor="middle" class="title">How the graph is stored in Neo4j</text>
+  <rect x="24" y="80" width="260" height="94" rx="12" fill="#eaf3ff" stroke="#567795" stroke-width="2" />
+  <text x="154" y="117" text-anchor="middle" class="label">Document</text>
+  <text x="154" y="149" text-anchor="middle" class="detail">text, embedding, hash</text>
+  <rect x="436" y="80" width="260" height="94" rx="12" fill="#e8f5ef" stroke="#567795" stroke-width="2" />
+  <text x="566" y="117" text-anchor="middle" class="label">Entity</text>
+  <text x="566" y="149" text-anchor="middle" class="detail">Lunar Excursions</text>
+  <path class="edge" d="M285 127 H430" />
+  <text x="360" y="115" text-anchor="middle" class="detail">MENTIONS</text>
+  <rect x="24" y="290" width="260" height="94" rx="12" fill="#fff3df" stroke="#567795" stroke-width="2" />
+  <text x="154" y="327" text-anchor="middle" class="label">Revision</text>
+  <text x="154" y="359" text-anchor="middle" class="detail">JSON snapshot, hash</text>
+  <rect x="436" y="290" width="260" height="94" rx="12" fill="#e8f5ef" stroke="#567795" stroke-width="2" />
+  <text x="566" y="327" text-anchor="middle" class="label">Entity</text>
+  <text x="566" y="359" text-anchor="middle" class="detail">Moon</text>
+  <path class="edge" d="M154 175 V284" />
+  <text x="166" y="236" class="detail">HAS_REVISION</text>
+  <path class="edge" d="M566 175 V284" />
+  <text x="578" y="224" class="detail">RELATION</text>
+  <text x="578" y="250" class="detail">kind=VISITS</text>
+  <text x="360" y="424" text-anchor="middle" class="detail">Entity.type and RELATION.kind are properties,</text>
+  <text x="360" y="452" text-anchor="middle" class="detail">so a new ontology version needs no schema change.</text>
+</svg>

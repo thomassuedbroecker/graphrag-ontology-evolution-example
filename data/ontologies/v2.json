@@ -1,0 +1,25 @@
+{
+  "version": "2",
+  "status": "approved",
+  "extends": "1",
+  "entity_types": [
+    "Company",
+    "Destination",
+    "Service",
+    "Training"
+  ],
+  "relations": {
+    "OFFERS": [
+      "Company",
+      "Service"
+    ],
+    "VISITS": [
+      "Service",
+      "Destination"
+    ],
+    "REQUIRES": [
+      "Service",
+      "Training"
+    ]
+  }
+}

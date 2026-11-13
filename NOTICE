@@ -1,0 +1,13 @@
+GraphRAG workflow example
+Copyright 2026 Thomas Suedbroecker and contributors
+
+Licensed under the Apache License, Version 2.0. See LICENSE.
+
+The supplied fictional Galaxium Travels company overview (Markdown)
+originates from thomassuedbroecker/galaxium-travels-graph-rag-watsonx-ai-example,
+an Apache-2.0 project. The new-service scenario adapts that overview; curated
+JSON passages and facts derive from it.
+
+Source revision, file mapping, modifications and separately licensed runtime
+components are documented in docs/licenses.md. External software and model
+weights retain their own licenses.

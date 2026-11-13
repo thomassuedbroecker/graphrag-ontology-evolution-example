@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "local-graphrag-example"
+version = "0.1.0"
+description = "Local Galaxium Travels GraphRAG maintenance experiment"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
+requires-python = ">=3.11"
+dependencies = [
+  "fastmcp>=2.12,<3",
+  "langchain>=1.0,<1.4",
+  "langchain-ollama>=1.0,<2",
+  "langchain-mcp-adapters>=0.1.11,<0.3",
+  "neo4j>=5.26,<6",
+  "python-dotenv>=1.1,<2",
+]
+
+[project.scripts]
+graphrag = "local_graphrag.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,52 @@
+{
+  "scope": "Synthetic demo reference expectations; no claim of production or legal validation",
+  "scenarios": [
+    {
+      "id": "baseline",
+      "source": "data/input-documents/galaxium-travels-company_overview.md",
+      "documents": "data/documents",
+      "ontology": "data/ontologies/v1.json",
+      "expected_route": "data-update",
+      "expected_facts": 4
+    },
+    {
+      "id": "new-service",
+      "source": "data/scenarios/new-service/company-overview.md",
+      "documents": "data/scenarios/new-service/documents",
+      "ontology": "data/ontologies/v1.json",
+      "expected_route": "data-update",
+      "expected_added_facts": [
+        [
+          "galaxium",
+          "OFFERS",
+          "lunar-photography-tours"
+        ]
+      ]
+    },
+    {
+      "id": "training-passage-v1",
+      "source": "data/scenarios/training-requirement/lunar-training-policy.md",
+      "documents": "data/scenarios/training-requirement/v1-passage",
+      "ontology": "data/ontologies/v1.json",
+      "expected_route": "data-update",
+      "expected_facts": 0,
+      "expected_added_facts": [],
+      "note": "Fits v1 because it declares no Training entity or REQUIRES fact; the dependency stays text-only"
+    },
+    {
+      "id": "training-requirement",
+      "source": "data/scenarios/training-requirement/lunar-training-policy.md",
+      "documents": "data/scenarios/training-requirement/candidates",
+      "ontology": "data/ontologies/v2.json",
+      "expected_route": "ontology-review",
+      "blocked_by_importer": true,
+      "expected_added_facts": [
+        [
+          "lunar-excursions",
+          "REQUIRES",
+          "lunar-surface-safety"
+        ]
+      ]
+    }
+  ]
+}
